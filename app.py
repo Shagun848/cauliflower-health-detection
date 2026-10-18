@@ -119,14 +119,17 @@ if uploaded:
                     else:
                         selected_values = values
 
-                    fig, ax = plt.subplots(figsize=(8, 6))
-                    shap.image_plot(
-                        [selected_values],
-                        np.expand_dims(arr / 255.0, axis=0),
-                        show=False
-                    )
-                    st.pyplot(plt.gcf())
-                    plt.close("all")
+                
+shap.image_plot(
+    [selected_values],
+    np.expand_dims(arr / 255.0, axis=0),
+    show=False
+)
+
+fig = plt.gcf()
+st.pyplot(fig)
+plt.close(fig)
+
 
                     st.caption(
                         "SHAP highlights image regions associated with "
